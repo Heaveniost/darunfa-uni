@@ -1,16 +1,61 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/index/index"
+
+		}, {
+			"path": "pages/cart/cart",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"enablePullDownRefresh": false
 			}
+
+		}, {
+			"path": "pages/member/member",
+			"style": {
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/news/news",
+			"style": {
+				"enablePullDownRefresh": false
+			}
+
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "大润发",
+		"navigationBarBackgroundColor": "#b50e03",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"selectedColor":"#b50e03",
+		"list": [
+			{
+				"text":"首页",
+				"pagePath":"pages/index/index",
+				"iconPath":"static/icon/home.png",
+				"selectedIconPath":"static/icon/home-active.png"
+			},
+			{
+				"text":"资讯",
+				"pagePath":"pages/news/news",
+				"iconPath":"static/icon/news.png",
+				"selectedIconPath":"static/icon/news-active.png"
+			},
+			{
+				"text":"购物车",
+				"pagePath":"pages/cart/cart",
+				"iconPath":"static/icon/cart.png",
+				"selectedIconPath":"static/icon/cart-active.png"
+			},
+			{
+				"text":"会员",
+				"pagePath":"pages/member/member",
+				"iconPath":"static/icon/member.png",
+				"selectedIconPath":"static/icon/member-active.png"
+			}
+		]
 	}
 }
