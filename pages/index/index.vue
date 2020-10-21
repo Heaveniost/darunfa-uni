@@ -1,10 +1,31 @@
 <template>
 	<view class="home">
-		<swiper indicator-dots circular autoplay>
+		<!-- 轮播图 -->
+		<!-- <swiper indicator-dots circular autoplay>
 			<swiper-item v-for="item in swipers" :key="item.id">
 				<image :src="item.img"></image>
 			</swiper-item>
-		</swiper>
+		</swiper> -->
+		<!-- 导航区域 -->
+		<view class="nav">
+			<view class="nav_item">
+				<view class="iconfont icon-ziyuan"></view>
+				<text>润发超市</text>
+			</view>
+			<view class="nav_item">
+				<view class="iconfont icon-guanyuwomen"></view>
+				<text>联系我们</text>
+			</view>
+			<view class="nav_item">
+				<view class="iconfont icon-tupian"></view>
+				<text>社区图片</text>
+			</view>
+			<view class="nav_item">
+				<view class="iconfont icon-shipin"></view>
+				<text>学习视频</text>
+			</view>
+		</view>
+		
 	</view>
 </template>
 
@@ -39,6 +60,29 @@
 		image {
 			width: 100%;
 			height: 100%;
+		}
+	}
+	.nav {
+		display: flex;
+		.nav_item {
+			width: 25%;
+			text-align: center;
+			.iconfont {
+				width: 120rpx;
+				height: 120rpx;
+				background: red;
+				border-radius: 50%;
+				margin: 10px auto;
+				line-height: 120rpx;
+				color: #fff;
+				font-size: 50rpx;
+			}
+			.icon-tupian {
+				font-size: 45rpx;
+			}
+			text {
+				font-size: 30rpx;
+			}
 		}
 	}
 
