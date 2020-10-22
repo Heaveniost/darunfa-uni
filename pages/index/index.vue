@@ -8,21 +8,9 @@
 		</swiper> -->
 		<!-- 导航区域 -->
 		<view class="nav">
-			<view class="nav_item">
-				<view class="iconfont icon-ziyuan"></view>
-				<text>润发超市</text>
-			</view>
-			<view class="nav_item">
-				<view class="iconfont icon-guanyuwomen"></view>
-				<text>联系我们</text>
-			</view>
-			<view class="nav_item">
-				<view class="iconfont icon-tupian"></view>
-				<text>社区图片</text>
-			</view>
-			<view class="nav_item">
-				<view class="iconfont icon-shipin"></view>
-				<text>学习视频</text>
+			<view class="nav_item" v-for="(item,index) in navigators" :key="index" @click="navItem(item.path)">
+				<view :class="item.icon"></view>
+				<text>{{ item.title }}</text>
 			</view>
 		</view>
 		<!-- 推荐商品 -->
@@ -39,8 +27,7 @@
 						{{ item.title }}
 					</view>
 				</view>
-				
-				
+
 			</view>
 		</view>
 	</view>
@@ -51,12 +38,34 @@
 		data() {
 			return {
 				swipers: [],
-				goods: []
+				goods: [],
+				navigators: [
+					{
+						icon: 'iconfont icon-ziyuan',
+						title: '黑马超市',
+						path: '/pages/goods/goods'
+					},
+					{
+						icon: 'iconfont icon-guanyuwomen',
+						title: '联系我们',
+						path: '/pages/contact/contact'
+					},
+					{
+						icon: 'iconfont icon-tupian',
+						title: '社区图片',
+						path: '/pages/pictures/pictures'
+					},
+					{
+						icon: 'iconfont icon-shipin',
+						title: '学习视频',
+						path: '/pages/videos/videos'
+					}
+				]
 			}
 		},
 		onLoad() {
 			this.getSwipers(),
-			this.getGoods()
+				this.getGoods()
 		},
 		methods: {
 			// 获取轮播图的数据
@@ -72,6 +81,12 @@
 					url: '/api/getgoods?pageindex=1'
 				})
 				this.goods = res.data.message
+			},
+			// 导航栏跳转
+			navItem(url) {
+				uni.navigateTo({
+					url
+				})
 			}
 		}
 	}
@@ -83,16 +98,20 @@
 			width: 750rpx;
 			height: 375rpx;
 		}
+
 		lunbo_img {
 			width: 100%;
 			height: 100%;
 		}
 	}
+
 	.nav {
 		display: flex;
+
 		.nav_item {
 			width: 25%;
 			text-align: center;
+
 			.iconfont {
 				width: 120rpx;
 				height: 120rpx;
@@ -103,18 +122,22 @@
 				color: #fff;
 				font-size: 50rpx;
 			}
+
 			.icon-tupian {
 				font-size: 45rpx;
 			}
+
 			text {
 				font-size: 30rpx;
 			}
 		}
 	}
+
 	.recommend {
 		background-color: #eee;
 		margin-top: 10px;
 		overflow: hidden;
+
 		.rtitle {
 			text-align: center;
 			height: 50px;
@@ -125,17 +148,20 @@
 			background: #fff;
 			margin: 7rpx 0;
 		}
+
 		.goods_list {
 			padding: 0 15rpx;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: space-between;
+
 			.goods_item {
 				background: #fff;
 				width: 355rpx;
 				margin: 10rpx 0; // 左右为0，否则图片独成一行 
 				padding: 15rpx;
 				box-sizing: border-box;
+
 				.goods_img {
 					width: 80%;
 					height: 150px;
@@ -144,10 +170,12 @@
 					display: block;
 					margin: 0 auto;
 				}
+
 				.price {
 					color: red;
 					font-size: 36rpx;
 					margin-top: 10rpx;
+
 					text:nth-child(2) {
 						color: #ccc;
 						font-size: 28rpx;
@@ -155,6 +183,7 @@
 						text-decoration: line-through;
 					}
 				}
+
 				.intro {
 					margin-top: 10rpx;
 					margin-bottom: 25rpx;
@@ -163,5 +192,4 @@
 			}
 		}
 	}
-
 </style>
