@@ -26,8 +26,8 @@
             "path" : "pages/goods/goods",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "navigationBarTitleText": "商品列表",
+                "enablePullDownRefresh": true
             }
             
         }
