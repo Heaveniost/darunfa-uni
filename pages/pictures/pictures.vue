@@ -2,10 +2,17 @@
 	<view class="pics">
 		<scroll-view class="left" scroll-y>
 			<view v-for="(item, index) in category" :key="item.id"
-					:class="active===index?'active':''" @click="chooseCate(index)"
+					:class="active===index?'active':''" @click="chooseCate(index, item.id)"
 			>
 			{{ item.title}}
 			</view>
+		</scroll-view>
+		<scroll-view class="right" scroll-y>
+			<view class="item" v-for="item in content" :key="item.id">
+				<image :src="item.img_url"></image>
+				<text>{{ item.title }}</text>
+			</view>		
+			<text v-if="content.length===0">暂时没有数据</text>
 		</scroll-view>
 	</view>
 </template>
@@ -15,7 +22,8 @@
 		data() {
 			return {
 				category: [],
-				active: 0
+				active: 0,
+				content: [] //接收具体信息
 			}
 		},
 		onLoad() {
@@ -28,9 +36,16 @@
 				})
 				// console.log(res)
 				this.category = res.data.message 
+				this.chooseCate(0, this.category[0].id)
+				console.log(this.content)
 			},
-			chooseCate(index) {
+			async chooseCate(index,id) {
 				this.active = index 
+				// 获取具体内容-页面主题区域的数据
+				const res = await this.$myRequest({
+					url: '/api/getimages/' + id
+				})
+				this.content = res.data.message
 			}
 		}
 	}
@@ -42,7 +57,7 @@
 	}
 	.pics {
 		height: 100%;
-		// display: flex;
+		display: flex;
 		.left {
 			width: 200rpx;
 			height: 100%;
@@ -58,6 +73,22 @@
 			.active {
 				background-color: red;
 				color: #fff;
+			}
+		}
+		.right {
+			height: 100%;
+			width: 520rpx;
+			margin: 10rpx auto;
+			.item {
+				image {
+					width: 520rpx;
+					height: 400rpx;
+					border-radius: 5px;
+				}
+				text {
+					font-size: 30rpx;
+					line-height: 60rpx;
+				}
 			}
 		}
 	}
