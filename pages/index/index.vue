@@ -29,46 +29,17 @@
 		<view class="recommend">
 			<view class="rtitle">推荐商品</view>
 			<view class="goods_list">
-				<view class="goods_item">
-					<image class="goods_img" src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg"></image>
+				<view class="goods_item" v-for="item in goods" :key="item.key">
+					<image class="goods_img" :src="item.img_url"></image>
 					<view class="price">
-						<text>￥2019</text>
-						<text>￥3199</text>
+						<text>￥{{ item.sell_price}}</text>
+						<text>￥{{ item.market_price}}</text>
 					</view>
 					<view class="intro">
-						华为P30，让世界与众不同 16G双卡双待
+						{{ item.title }}
 					</view>
 				</view>
-				<view class="goods_item">
-					<image class="goods_img" src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg"></image>
-					<view class="price">
-						<text>2019</text>
-						<text>3199</text>
-					</view>
-					<view class="intro">
-						华为P30，让世界与众不同 16G双卡双待
-					</view>
-				</view>
-				<view class="goods_item">
-					<image class="goods_img" src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg"></image>
-					<view class="price">
-						<text>2019</text>
-						<text>3199</text>
-					</view>
-					<view class="intro">
-						华为P30，让世界与众不同 16G双卡双待
-					</view>
-				</view>
-				<view class="goods_item">
-					<image class="goods_img" src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg"></image>
-					<view class="price">
-						<text>2019</text>
-						<text>3199</text>
-					</view>
-					<view class="intro">
-						华为P30，让世界与众不同 16G双卡双待
-					</view>
-				</view>
+				
 				
 			</view>
 		</view>
@@ -79,11 +50,13 @@
 	export default {
 		data() {
 			return {
-				swipers: []
+				swipers: [],
+				goods: []
 			}
 		},
 		onLoad() {
-			this.getSwipers()
+			this.getSwipers(),
+			this.getGoods()
 		},
 		methods: {
 			// 获取轮播图的数据
@@ -92,6 +65,13 @@
 					url: '/api/getlunbo'
 				})
 				this.swipers = res.data.message
+			},
+			// 获取推荐商品的数据列表
+			async getGoods() {
+				const res = await this.$myRequest({
+					url: '/api/getgoods?pageindex=1'
+				})
+				this.goods = res.data.message
 			}
 		}
 	}
@@ -167,6 +147,7 @@
 				.price {
 					color: red;
 					font-size: 36rpx;
+					margin-top: 10rpx;
 					text:nth-child(2) {
 						color: #ccc;
 						font-size: 28rpx;
@@ -175,8 +156,8 @@
 					}
 				}
 				.intro {
-					margin-top: 20rpx;
-					margin-bottom: 40rpx;
+					margin-top: 10rpx;
+					margin-bottom: 25rpx;
 					// line-height: 40rpx; 指定文字所在区域的高度 
 				}
 			}
