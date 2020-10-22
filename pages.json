@@ -35,16 +35,16 @@
             "path" : "pages/contact/contact",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "联系信息",
                 "enablePullDownRefresh": false
             }
             
         }
         ,{
             "path" : "pages/pictures/pictures",
-            "style" :                                                                                    
+            "style":                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "图片一览",
                 "enablePullDownRefresh": false
             }
             
