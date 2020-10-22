@@ -9,7 +9,7 @@
 		</scroll-view>
 		<scroll-view class="right" scroll-y>
 			<view class="item" v-for="item in content" :key="item.id">
-				<image :src="item.img_url"></image>
+				<image @click="preview(item.img_url)" :src="item.img_url"></image>
 				<text>{{ item.title }}</text>
 			</view>		
 			<text v-if="content.length===0">暂时没有数据</text>
@@ -46,6 +46,13 @@
 					url: '/api/getimages/' + id
 				})
 				this.content = res.data.message
+			},
+			preview(current) {
+				const urls = this.content.map(item => {return item.img_url})
+				uni.previewImage({
+					current,
+					urls
+				})
 			}
 		}
 	}
