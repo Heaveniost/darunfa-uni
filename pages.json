@@ -18,6 +18,7 @@
 		}, {
 			"path": "pages/news/news",
 			"style": {
+				"navigationBarTitleText": "新闻信息",
 				"enablePullDownRefresh": false
 			}
 
@@ -54,6 +55,15 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/news-detail/news-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新闻详情",
                 "enablePullDownRefresh": false
             }
             
