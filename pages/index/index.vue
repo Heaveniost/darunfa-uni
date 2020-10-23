@@ -16,7 +16,7 @@
 		<!-- 推荐商品 -->
 		<view class="recommend">
 			<view class="rtitle">推荐商品</view>
-			<goods-list :goods="goods"></goods-list>
+			<goods-list :goods="goods" @goodsClick="toGoodsDetail"></goods-list>
 		</view>
 	</view>
 </template>
@@ -78,6 +78,12 @@
 			navItem(url) {
 				uni.navigateTo({
 					url
+				})
+			},
+			// 商品详情页
+			toGoodsDetail(id) {
+				uni.navigateTo({
+					url: '../goods-detail/goods-detail?id=' + id
 				})
 			}
 		}

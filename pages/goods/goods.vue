@@ -1,6 +1,6 @@
 <template>
 	<view class="goods-list">
-		<goods-list :goods="goods"></goods-list>
+		<goods-list :goods="goods" @goodsClick="toGoodsDetail"></goods-list>
 		<view class="bottom" v-if="flag">没有更多数据了</view>
 	</view>
 </template>
@@ -44,6 +44,12 @@
 						uni.stopPullDownRefresh()
 					})
 				}, 1000)
+			},
+			// 点击进入商品详情页
+			toGoodsDetail(id) {
+				uni.navigateTo({
+					url: '../goods-detail/goods-detail?id=' + id
+				})
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 				<text>￥{{ item.sell_price}}</text>
 				<text>￥{{ item.market_price}}</text>
 			</view>
-			<view class="intro">
+			<view class="intro" @click="itemClick(item.id)">
 				{{ item.title }}
 			</view>
 		</view>
@@ -15,7 +15,12 @@
 
 <script>
 	export default {
-		props: ['goods']
+		props: ['goods'],
+		methods: {
+			itemClick(id) {
+				this.$emit('goodsClick', id)
+			}
+		}
 	}
 </script>
 
