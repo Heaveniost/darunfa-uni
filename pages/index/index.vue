@@ -1,11 +1,13 @@
 <template>
 	<view class="home">
 		<!-- 轮播图 -->
-		<!-- <swiper indicator-dots circular autoplay>
+		<swiper indicator-dots circular autoplay>
 			<swiper-item v-for="item in swipers" :key="item.id">
-				<image class="lunbo_img" :src="item.img"></image>
+				<!-- <image class="lunbo_img" :src="item.img"></image> -->
+				<!-- 轮播图的地址改变了，以下图片是为了显示效果，理解过程就行了 -->
+				<image class="lunbo_img" src="../../static/darunfa.jpg"></image>
 			</swiper-item>
-		</swiper> -->
+		</swiper>
 		<!-- 导航区域 -->
 		<view class="nav">
 			<view class="nav_item" v-for="(item,index) in navigators" :key="index" @click="navItem(item.path)">
@@ -31,7 +33,7 @@
 				navigators: [
 					{
 						icon: 'iconfont icon-ziyuan',
-						title: '黑马超市',
+						title: '润发超市',
 						path: '/pages/goods/goods'
 					},
 					{
@@ -57,7 +59,7 @@
 		},
 		onLoad() {
 			this.getSwipers(),
-				this.getGoods()
+			this.getGoods()
 		},
 		methods: {
 			// 获取轮播图的数据
@@ -96,8 +98,7 @@
 			width: 750rpx;
 			height: 375rpx;
 		}
-
-		lunbo_img {
+		.lunbo_img {
 			width: 100%;
 			height: 100%;
 		}

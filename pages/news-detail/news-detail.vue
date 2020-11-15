@@ -56,5 +56,8 @@
 				padding: 15rpx;
 			}
 		}
+		.content {
+			margin: 0 15rpx;
+		}
 	}
 </style>
